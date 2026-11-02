@@ -1,6 +1,7 @@
 # VDUI Unit 3 Assignment: Multimedia and Interactive Visualization
 **Course:** UE24CS342AA9 — Visualization of Data and User Interfaces (VDUI)  
 **Institution:** PES University  
+**Student SRN:** PES2UG24CS028  
 
 This repository contains solutions, visual analytics implementations, and reports for Unit 3 assignments and activities.
 
@@ -52,3 +53,4 @@ The security camera over Parking Lot B recorded an incident between $t = 0$ s an
 ├── unit3_ppt1_activity.ipynb   # Fully solved and executed Jupyter Notebook
 └── unit3_ppt1_cctv_log.csv      # Telemetry log dataset (3,600 frames)
 ```
+
