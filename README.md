@@ -45,10 +45,44 @@ The security camera over Parking Lot B recorded an incident between $t = 0$ s an
 
 ---
 
+## Exercise 3: The I-94 "Traffic Pulse" Temporal Visualization (`Unit3_PPT5_Temporal_Activity.ipynb`)
+
+### Overview
+For the Minnesota Department of Transportation (MnDOT), this exercise delivers a temporal visual analytics study on hourly westbound traffic along Interstate 94 between Minneapolis and St. Paul (2012–2018; 48,204 rows).
+
+### Summary of Tasks & Findings
+- **Part A — Temporal Data Structure & Gap Analysis:**
+  - Resolved duplicate timestamps and constructed a monotonic hourly time series index.
+  - Calculated the modal sampling interval ($\Delta t = 1$ hour) and identified a major sensor outage gap of 308 days in 2014–2015.
+  - Distinguishes time as a Key attribute (independent indexing coordinate) vs. Value attribute (quantitative duration/interval).
+- **Part B — Vendor Sampling Proposal & Nyquist Aliasing:**
+  - Proved that the vendor's proposal to sample once every 25 hours violates the Nyquist criterion ($f_s > 2f$, $\Delta t_{\text{Nyquist}} < 12$ hours) for the fundamental 24-hour traffic cycle.
+  - Demonstrated that 25-hour sampling causes stroboscopic aliasing, folding the diurnal commuter peak into a deceptive phantom 25-day cycle ($f_{\text{alias}} = |1/24 - 1/25| = 1/600\text{ h}^{-1}$).
+- **Part C — Aggregation and Smoothing Dynamics:**
+  - Compared 7-day centred vs. 7-day trailing moving averages for 2017 daily traffic totals.
+  - Proved that trailing moving averages introduce an asymmetric phase delay of 3 days ($(k-1)/2$), shifting holiday anomalies (e.g., 4th of July dip) to July 7th.
+  - Analyzed visual resolution and display capacity: 8,760 hourly points mapped across 1,000 horizontal pixels forces $\approx 8.7$ points per pixel, necessitating aggregation or filtering.
+- **Part D — Filtering and Highway Lane Closure Scheduling:**
+  - Filtered Mon–Fri non-holiday rush-hour baselines from holiday/weekend patterns.
+  - Identified the optimal daytime lane-closure maintenance window between 9:00 and 15:00: **10:00 AM** is the quietest weekday start hour with minimal commuter disruption.
+- **Part E — Animated "Traffic Pulse" & Perception Principles:**
+  - Calculated frame budget ($33.33$ ms at 30 fps), smoothstep easing trajectory ($s(u) = 3u^2 - 2u^3$), animation duration ($18.0$ s for 24 hourly states), and temporal compression ($4800:1$).
+  - Constructed Plotly animated bar chart across months with fixed y-axis scale ($[0, 7500]$), preserving Heer & Robertson's principle of **Congruence**.
+  - Compared animation vs. small multiples: verified Colin Ware's principle that *"eyes beat memory"*, demonstrating why faceted small multiples enable rapid, accurate visual comparisons without working memory fatigue.
+- **Part F — Recommendations for Engineering & Public Lobby Displays:**
+  - Road-works engineers: static small multiples and quantile/confidence interval profiles.
+  - Public lobby display: fixed scales, smoothstep easing transitions, prominent clock glyphs, and visual cues to mitigate change blindness.
+
+---
+
 ## Repository Structure
 ```
 ├── README.md
 ├── .gitignore
-├── unit3_ppt1_activity.ipynb   # Fully solved and executed Jupyter Notebook
-└── unit3_ppt1_cctv_log.csv      # Telemetry log dataset (3,600 frames)
+├── unit3_ppt1_activity.ipynb             # Exercise 1: Parking-Lot Incident Review
+├── unit3_ppt1_cctv_log.csv                # Exercise 1: CCTV log dataset
+├── unit3_ppt3_activity.ipynb             # Exercise 2: Tumour-Board Briefing
+├── unit3_ppt3_head_ct_phantom.csv        # Exercise 2: CT scan phantom dataset
+├── Unit3_PPT5_Temporal_Activity.ipynb    # Exercise 3: I-94 Traffic Pulse Temporal Analysis
+└── Metro_Interstate_Traffic_Volume.csv   # Exercise 3: Metro Interstate Traffic Volume dataset
 ```
