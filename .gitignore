@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Scratch and test files
+scratch_*.py
+test_*.py
+run_nb.py
+update_notebook.py
+inspect_nb.py
+*.png
+
+# Environments & caches
+.env
+.venv
+env/
+venv/
+.matplotlib/
